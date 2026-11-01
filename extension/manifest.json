@@ -1,0 +1,50 @@
+{
+  "manifest_version": 3,
+  "name": "X Off",
+  "version": "1.0.0",
+  "description": "Close every X/Twitter tab in one press, and block X for a while.",
+  "minimum_chrome_version": "120",
+  "permissions": ["declarativeNetRequest", "storage", "alarms"],
+  "host_permissions": [
+    "*://x.com/*",
+    "*://*.x.com/*",
+    "*://twitter.com/*",
+    "*://*.twitter.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "X Off",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "commands": {
+    "close-x-tabs": {
+      "suggested_key": { "default": "Alt+Shift+X" },
+      "description": "Close all X/Twitter tabs"
+    },
+    "toggle-block": {
+      "suggested_key": { "default": "Alt+Shift+B" },
+      "description": "Block X until you unblock it (press again to unblock)"
+    }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["blocked.html", "blocked.js", "ui.css", "format.js", "icons/icon128.png"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

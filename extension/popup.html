@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>X Off</title>
+  <link rel="stylesheet" href="ui.css">
+  <style>
+    body { width: 300px; padding: 14px; }
+    header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    h1 { font-size: 15px; margin: 0; }
+    h2 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 0 0 8px; }
+    .pill { font-size: 12px; padding: 2px 8px; border-radius: 999px; background: var(--chip); color: var(--muted); }
+    .pill.blocked { background: var(--danger-soft); color: var(--danger); font-weight: 600; }
+    #close { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 11px 14px; }
+    #undo { margin: 8px 2px 0; }
+    section + section { border-top: 1px solid var(--line); margin-top: 14px; padding-top: 12px; }
+    .chips { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+    .chips button { padding: 8px 6px; }
+    .chips .wide { grid-column: span 3; display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; }
+    .chips .full { grid-column: span 3; }
+    #block-off .note { margin-top: 8px; }
+    #block-until { margin: 0 0 2px; font-weight: 600; }
+    #unblock { margin-top: 10px; width: 100%; }
+    footer { margin-top: 12px; text-align: right; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>X Off</h1>
+    <span id="status" class="pill">…</span>
+  </header>
+
+  <section>
+    <button id="close" class="primary"><span id="close-label">Close all X tabs</span><kbd id="close-key"></kbd></button>
+    <p id="undo" class="note" hidden><span id="undo-text"></span> <button id="reopen" class="link">Reopen</button></p>
+  </section>
+
+  <section>
+    <h2>Block X</h2>
+    <div id="block-off">
+      <div class="chips">
+        <button data-duration="30">30 min</button>
+        <button data-duration="60">1 hour</button>
+        <button data-duration="240">4 hours</button>
+        <button data-duration="today" class="full">Rest of today</button>
+        <button data-duration="forever" class="wide"><span>Until I unblock</span><kbd id="block-key"></kbd></button>
+      </div>
+      <p class="note">Blocking also closes any X tabs that are open.</p>
+    </div>
+    <div id="block-on" hidden>
+      <p id="block-until"></p>
+      <p id="block-left" class="note"></p>
+      <button id="unblock">Unblock</button>
+    </div>
+  </section>
+
+  <footer><button id="shortcuts" class="link">Change shortcuts</button></footer>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>X is blocked</title>
+  <link rel="icon" href="icons/icon128.png">
+  <link rel="stylesheet" href="ui.css">
+  <style>
+    body { min-height: 100vh; display: grid; place-items: center; padding: 24px 16px; }
+    main { max-width: 420px; text-align: center; }
+    img { width: 56px; height: 56px; }
+    h1 { font-size: 26px; margin: 18px 0 6px; }
+    #until { color: var(--muted); font-size: 16px; margin: 0 0 24px; }
+    .actions { display: flex; gap: 8px; justify-content: center; margin-bottom: 20px; }
+    .actions button, .actions a { padding: 10px 18px; font-size: 15px; }
+    a.button {
+      display: inline-block; text-decoration: none; border-radius: var(--radius);
+      background: var(--chip); color: var(--fg);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <img src="icons/icon128.png" alt="">
+    <h1 id="title">X is blocked</h1>
+    <p id="until"></p>
+    <div class="actions">
+      <button id="close" class="primary">Close this tab</button>
+      <a id="goto" class="button" href="https://x.com/" hidden>Go to X</a>
+    </div>
+    <p id="hint" class="note">To unblock early, click X Off in the toolbar<span id="key"></span>.</p>
+  </main>
+  <script type="module" src="blocked.js"></script>
+</body>
+</html>
